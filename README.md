@@ -150,6 +150,42 @@ the top of the form:
 <% end %>
 ```
 
+# More Freebies: `field_with_errors`
+
+Let's a look at another nice feature of `FormHelper`. Here's our `form_for`
+code again:
+
+```erb
+<!-- app/views/posts/edit.html.erb //-->
+
+<%= form_for @post do |f| %>
+  <%= f.text_field :title %>
+  <%= f.text_area :content %>
+  <%= f.submit %>
+<% end %>
+```
+
+The `text_field` call generates this tag:
+
+```html
+<input type="text" name="post[title]" id="post_title" value="Existing Post Title"/>
+```
+
+Not only will `FormHelper` pre-fill an existing `Post` object's data, it will
+also wrap the tag in a div with an error class if the field has failed
+validation:
+
+```html
+<div class="field_with_errors">
+  <input type="text" name="post[title]" id="post_title" value="Existing Post Title"/>
+</div>
+```
+
+This can also result in some unexpected styling changes, because `<div>`s are
+block tags (which take up the entire width of their container) while `<input>`s
+are inline tags. If your layout suddenly gets messed up when a field has errors,
+this is probably why.
+
 # Recap
 
 `form_for` gives us a lot of power!
