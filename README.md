@@ -152,7 +152,7 @@ the top of the form:
 
 # More Freebies: `field_with_errors`
 
-Let's a look at another nice feature of `FormHelper`. Here's our `form_for`
+Let's look at another nice feature of `FormHelper`. Here's our `form_for`
 code again:
 
 ```erb
@@ -203,3 +203,5 @@ developer network tools][devtools].
 
 [devtools]:
 http://superuser.com/questions/395919/where-is-the-post-tab-in-chrome-developer-tools-network
+
+<a href='https://learn.co/lessons/validations-with-form_for-rails' data-visibility='hidden'>View this lesson on Learn.co</a>
