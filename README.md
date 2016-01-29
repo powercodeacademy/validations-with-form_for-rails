@@ -204,4 +204,4 @@ developer network tools][devtools].
 [devtools]:
 http://superuser.com/questions/395919/where-is-the-post-tab-in-chrome-developer-tools-network
 
-<a href='https://learn.co/lessons/validations-with-form_for-rails' data-visibility='hidden'>View this lesson on Learn.co</a>
+<p data-visibility='hidden'>View <a href='https://learn.co/lessons/validations-with-form_for-rails' title='Validations with form_for'>Validations with form_for</a> on Learn.co and start learning to code for free.</p>
