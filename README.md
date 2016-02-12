@@ -13,7 +13,7 @@ After this lesson, you'll be able to...
 # The differences between `form_for` and `form_tag`
 
 This step will make heavy usage of `form_for`, the high-powered alternative to
-`form_tag`. The biggest difference beteen these two helpers is that `form_for`
+`form_tag`. The biggest difference between these two helpers is that `form_for`
 creates a form specifically **for** a model object. `form_for` is full of
 convenient features.
 
@@ -204,4 +204,6 @@ developer network tools][devtools].
 [devtools]:
 http://superuser.com/questions/395919/where-is-the-post-tab-in-chrome-developer-tools-network
 
-<p data-visibility='hidden'>View <a href='https://learn.co/lessons/validations-with-form_for-rails' title='Validations with form_for'>Validations with form_for</a> on Learn.co and start learning to code for free.</p>
+<a href='https://learn.co/lessons/validations-with-form_for-rails' data-visibility='hidden'>View this lesson on Learn.co</a>
+
+<p data-visibility='hidden'>View <a href='https://learn.co/lessons/validations-with-form_for-rails'>Validations with form_for</a> on Learn.co and start learning to code for free.</p>
