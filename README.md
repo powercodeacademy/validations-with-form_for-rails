@@ -1,7 +1,6 @@
 # Validations with `form_for`
 
-Now that we know Rails automatically performs validations defined on models,
-let's use this information to easily display validation errors to the user.
+Now that we know Rails automatically performs validations defined on models, let's use this information to easily display validation errors to the user.
 
 # Objectives
 
@@ -12,16 +11,12 @@ After this lesson, you'll be able to...
 
 # The differences between `form_for` and `form_tag`
 
-This step will make heavy usage of `form_for`, the high-powered alternative to
-`form_tag`. The biggest difference between these two helpers is that `form_for`
-creates a form specifically **for** a model object. `form_for` is full of
+This step will make heavy usage of `form_for`, the high-powered alternative to `form_tag`. The biggest difference between these two helpers is that `form_for` creates a form specifically **for** a model object. `form_for` is full of
 convenient features.
 
-In the example below, `@post` is the model object that needs a form. `form_for`
-automatically performs a route lookup to find the right URL for post.
+In the example below, `@post` is the model object that needs a form. `form_for` automatically performs a route lookup to find the right URL for post.
 
-`form_for` takes a block. It passes an instance of [FormHelper][form_helper] as
-a parameter to the block, which is what `f` is below.
+`form_for` takes a block. It passes an instance of [FormHelper][form_helper] as a parameter to the block, which is what `f` is below.
 
 [form_helper]: http://api.rubyonrails.org/classes/ActionView/Helpers/FormHelper.html
 
@@ -62,9 +57,7 @@ Here's what we would need to do with `form_tag` to generate the exact same HTML:
 <% end %>
 ```
 
-`form_tag` doesn't know what action we're going to use it for, because it has no
-model object to check. `form_for` knows that an empty, unsaved model object
-needs a `new` form and a populated object needs an `edit` form. This means we
+`form_tag` doesn't know what action we're going to use it for, because it has no model object to check. `form_for` knows that an empty, unsaved model object needs a `new` form and a populated object needs an `edit` form. This means we
 get to skip all of these steps:
 
 1. Setting the `name` and `id` of the `<form>` element.
@@ -99,15 +92,11 @@ Here's our usual vanilla `create` action:
   end
 ```
 
-We still have to solve the dual problem of what to do when there's no valid
-model object to redirect to, and how to hold on to our error messages while
-re-rendering the same form.
+We still have to solve the dual problem of what to do when there's no valid model object to redirect to, and how to hold on to our error messages while re-rendering the same form.
 
 # Re-Rendering With Errors
 
-Remember from a few lessons ago how CRUD methods return `false` when validation
-fails? We can use that to our advantage here and branch our actions based on the
-result:
+Remember from a few lessons ago how CRUD methods return `false` when validation fails? We can use that to our advantage here and branch our actions based on the result:
 
 ```ruby
 # app/controllers/posts_controller.rb
@@ -125,11 +114,9 @@ result:
 
 # Full Messages with Prepopulated Fields
 
-Because of `form_for`, Rails will automatically prepopulate the `new` form with
-the values the user entered on the previous page.
+Because of `form_for`, Rails will automatically prepopulate the `new` form with the values the user entered on the previous page.
 
-To get some extra verbosity, we can add the snippet from the previous lesson to
-the top of the form:
+To get some extra verbosity, we can add the snippet from the previous lesson to the top of the form:
 
 ```erb
 <!-- app/views/posts/new.html.erb //-->
@@ -152,8 +139,7 @@ the top of the form:
 
 # More Freebies: `field_with_errors`
 
-Let's look at another nice feature of `FormHelper`. Here's our `form_for`
-code again:
+Let's look at another nice feature of `FormHelper`. Here's our `form_for` code again:
 
 ```erb
 <!-- app/views/posts/edit.html.erb //-->
@@ -171,9 +157,7 @@ The `text_field` call generates this tag:
 <input type="text" name="post[title]" id="post_title" value="Existing Post Title"/>
 ```
 
-Not only will `FormHelper` pre-fill an existing `Post` object's data, it will
-also wrap the tag in a div with an error class if the field has failed
-validation:
+Not only will `FormHelper` pre-fill an existing `Post` object's data, it will also wrap the tag in a div with an error class if the field has failed validation:
 
 ```html
 <div class="field_with_errors">
@@ -181,25 +165,15 @@ validation:
 </div>
 ```
 
-This can also result in some unexpected styling changes, because `<div>`s are
-block tags (which take up the entire width of their container) while `<input>`s
-are inline tags. If your layout suddenly gets messed up when a field has errors,
-this is probably why.
+This can also result in some unexpected styling changes, because `<div>`s are block tags (which take up the entire width of their container) while `<input>`s are inline tags. If your layout suddenly gets messed up when a field has errors, this is probably why.
 
 # Recap
 
 `form_for` gives us a lot of power!
 
-Our challenge as developers is to keep track of the different layers of magic
-that makes this tool so convenient. The old adage is true: we're responsible for
-understanding not only *how* to use `form_for`, but also *why* it works.
-Otherwise, we'll be completely lost as soon as a sufficiently unusual edge case
-appears.
+Our challenge as developers is to keep track of the different layers of magic that makes this tool so convenient. The old adage is true: we're responsible for understanding not only *how* to use `form_for`, but also *why* it works. Otherwise, we'll be completely lost as soon as a sufficiently unusual edge case appears.
 
-When in doubt, **read the HTML**. Get used to hitting the "View Source" and
-"Open Inspector" hotkeys in your browser (`Ctrl-u` and `Ctrl-Shift-i` on Chrome
-Windows), and remember that most browsers let you [examine POST data in their
-developer network tools][devtools].
+When in doubt, **read the HTML**. Get used to hitting the "View Source" and "Open Inspector" hotkeys in your browser (`Ctrl-u` and `Ctrl-Shift-i` on Chrome Windows), and remember that most browsers let you [examine POST data in their developer network tools][devtools].
 
 [devtools]:
 http://superuser.com/questions/395919/where-is-the-post-tab-in-chrome-developer-tools-network
