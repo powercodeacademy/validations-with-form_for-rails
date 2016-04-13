@@ -50,7 +50,7 @@ Here's what we would need to do with `form_tag` to generate the exact same HTML:
 ```erb
 <!-- app/views/posts/new.html.erb //-->
 
-<%= form_tag post_path(@post), method: "patch", name: "edit_song", id: "edit_song" do %>
+<%= form_tag post_path(@post), method: "patch", name: "edit_post", id: "edit_post" do %>
   <%= text_field_tag "post[title]", @post.title %>
   <%= text_area "post[content]", @post.content %>
   <%= submit_tag "Update Post" %>
