@@ -11,14 +11,11 @@ After this lesson, you'll be able to...
 
 # The differences between `form_for` and `form_tag`
 
-This step will make heavy usage of `form_for`, the high-powered alternative to `form_tag`. The biggest difference between these two helpers is that `form_for` creates a form specifically **for** a model object. `form_for` is full of
-convenient features.
+This step will make heavy usage of `form_for`, the high-powered alternative to `form_tag`. The biggest difference between these two helpers is that `form_for` creates a form specifically **for** a model object. `form_for` is full of convenient features.
 
 In the example below, `@post` is the model object that needs a form. `form_for` automatically performs a route lookup to find the right URL for post.
 
-`form_for` takes a block. It passes an instance of [FormHelper][form_helper] as a parameter to the block, which is what `f` is below.
-
-[form_helper]: http://api.rubyonrails.org/classes/ActionView/Helpers/FormHelper.html
+`form_for` takes a block. It passes an instance of [FormBuilder](http://api.rubyonrails.org/classes/ActionView/Helpers/FormBuilder.html) as a parameter to the block, which is what `f` is below.
 
 A basic implementation looks like this:
 
@@ -57,14 +54,13 @@ Here's what we would need to do with `form_tag` to generate the exact same HTML:
 <% end %>
 ```
 
-`form_tag` doesn't know what action we're going to use it for, because it has no model object to check. `form_for` knows that an empty, unsaved model object needs a `new` form and a populated object needs an `edit` form. This means we
-get to skip all of these steps:
+`form_tag` doesn't know what action we're going to use it for, because it has no model object to check. `form_for` knows that an empty, unsaved model object needs a `new` form and a populated object needs an `edit` form. This means we get to skip all of these steps:
 
 1. Setting the `name` and `id` of the `<form>` element.
-1. Setting the method to `patch` on edits.
-1. Setting the text of the `<submit>` element.
-1. Specifying the root parameter name (`post[whatever]`) for every field.
-1. Choosing the attribute (`@post.whatever`) to fill for every field.
+2. Setting the method to `patch` on edits.
+3. Setting the text of the `<submit>` element.
+4. Specifying the root parameter name (`post[whatever]`) for every field.
+5. Choosing the attribute (`@post.whatever`) to fill for every field.
 
 Nifty!
 
@@ -139,7 +135,7 @@ To get some extra verbosity, we can add the snippet from the previous lesson to 
 
 # More Freebies: `field_with_errors`
 
-Let's look at another nice feature of `FormHelper`. Here's our `form_for` code again:
+Let's look at another nice feature of `FormBuilder`. Here's our `form_for` code again:
 
 ```erb
 <!-- app/views/posts/edit.html.erb //-->
@@ -157,7 +153,7 @@ The `text_field` call generates this tag:
 <input type="text" name="post[title]" id="post_title" value="Existing Post Title"/>
 ```
 
-Not only will `FormHelper` pre-fill an existing `Post` object's data, it will also wrap the tag in a div with an error class if the field has failed validation:
+Not only will `FormBuilder` pre-fill an existing `Post` object's data, it will also wrap the tag in a `div` with an error class if the field has failed validation(s):
 
 ```html
 <div class="field_with_errors">
@@ -165,19 +161,14 @@ Not only will `FormHelper` pre-fill an existing `Post` object's data, it will al
 </div>
 ```
 
-This can also result in some unexpected styling changes, because `<div>`s are block tags (which take up the entire width of their container) while `<input>`s are inline tags. If your layout suddenly gets messed up when a field has errors, this is probably why.
+This can also result in some unexpected styling changes because `<div>` is a block tag (which takes up the entire width of its container) while `<input>` is an inline tag. If your layout suddenly gets messed up when a field has errors, this is probably why.
 
 # Recap
 
 `form_for` gives us a lot of power!
 
-Our challenge as developers is to keep track of the different layers of magic that makes this tool so convenient. The old adage is true: we're responsible for understanding not only *how* to use `form_for`, but also *why* it works. Otherwise, we'll be completely lost as soon as a sufficiently unusual edge case appears.
+Our challenge as developers is to keep track of the different layers of magic that make this tool so convenient. The old adage is true: we're responsible for understanding not only *how* to use `form_for` but also *why* it works. Otherwise, we'll be completely lost as soon as a sufficiently unusual edge case appears.
 
-When in doubt, **read the HTML**. Get used to hitting the "View Source" and "Open Inspector" hotkeys in your browser (`Ctrl-u` and `Ctrl-Shift-i` on Chrome Windows), and remember that most browsers let you [examine POST data in their developer network tools][devtools].
+When in doubt, **read the HTML**. Get used to hitting the "View Source" and "Open Inspector" hotkeys in your browser (`Ctrl-u` and `Ctrl-Shift-i` on Chrome Windows; `Option-Command-u` and `Option-Command-i` on Chrome Mac), and remember that most browsers let you [examine `POST` data in their developer network tools](http://superuser.com/questions/395919/where-is-the-post-tab-in-chrome-developer-tools-network).
 
-[devtools]:
-http://superuser.com/questions/395919/where-is-the-post-tab-in-chrome-developer-tools-network
-
-<a href='https://learn.co/lessons/validations-with-form_for-rails' data-visibility='hidden'>View this lesson on Learn.co</a>
-
-<p data-visibility='hidden'>View <a href='https://learn.co/lessons/validations-with-form_for-rails'>Validations with form_for</a> on Learn.co and start learning to code for free.</p>
+<p data-visibility='hidden'>View <a href='https://learn.co/lessons/validations-with-form_for-rails'>Validations with `form_for`</a> on Learn.co and start learning to code for free.</p>
