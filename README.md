@@ -171,6 +171,3 @@ Our challenge as developers is to keep track of the different layers of magic th
 
 When in doubt, **read the HTML**. Get used to hitting the "View Source" and "Open Inspector" hotkeys in your browser (`Ctrl-u` and `Ctrl-Shift-i` on Chrome Windows; `Option-Command-u` and `Option-Command-i` on Chrome Mac), and remember that most browsers let you [examine `POST` data in their developer network tools](http://superuser.com/questions/395919/where-is-the-post-tab-in-chrome-developer-tools-network).
 
-<p data-visibility='hidden'>View <a href='https://learn.co/lessons/validations-with-form_for-rails'>Validations with `form_for`</a> on Learn.co and start learning to code for free.</p>
-
-<p class='util--hide'>View <a href='https://learn.co/lessons/validations-with-form_for-rails'>Validations with form_for</a> on Learn.co and start learning to code for free.</p>
