@@ -1,4 +1,4 @@
-# Validations with `form_for`
+# Validations with **form_for**
 
 Now that we know Rails automatically performs validations defined on models, let's use this information to easily display validation errors to the user.
 
