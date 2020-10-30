@@ -2,14 +2,14 @@
 
 Now that we know Rails automatically performs validations defined on models, let's use this information to easily display validation errors to the user.
 
-# Objectives
+## Objectives
 
 After this lesson, you'll be able to...
 
 - use `form_for` to display a form with Validations
 - print out full error messages above the form
 
-# The differences between `form_for` and `form_tag`
+## The differences between `form_for` and `form_tag`
 
 This step will make heavy usage of `form_for`, the high-powered alternative to `form_tag`. The biggest difference between these two helpers is that `form_for` creates a form specifically **for** a model object. `form_for` is full of convenient features.
 
@@ -64,7 +64,7 @@ Here's what we would need to do with `form_tag` to generate the exact same HTML:
 
 Nifty!
 
-# Using `form_for` to generate empty forms
+## Using `form_for` to generate empty forms
 
 To wire up an empty form in our `new` view, we need to create a blank object:
 
@@ -90,7 +90,7 @@ Here's our usual vanilla `create` action:
 
 We still have to solve the dual problem of what to do when there's no valid model object to redirect to, and how to hold on to our error messages while re-rendering the same form.
 
-# Re-Rendering With Errors
+## Re-Rendering With Errors
 
 Remember from a few lessons ago how CRUD methods return `false` when validation fails? We can use that to our advantage here and branch our actions based on the result:
 
@@ -108,7 +108,7 @@ Remember from a few lessons ago how CRUD methods return `false` when validation 
   end
 ```
 
-# Full Messages with Prepopulated Fields
+## Full Messages with Prepopulated Fields
 
 Because of `form_for`, Rails will automatically prepopulate the `new` form with the values the user entered on the previous page.
 
@@ -133,7 +133,7 @@ To get some extra verbosity, we can add the snippet from the previous lesson to 
 <% end %>
 ```
 
-# More Freebies: `field_with_errors`
+## More Freebies: `field_with_errors`
 
 Let's look at another nice feature of `FormBuilder`. Here's our `form_for` code again:
 
@@ -163,7 +163,7 @@ Not only will `FormBuilder` pre-fill an existing `Post` object's data, it will a
 
 This can also result in some unexpected styling changes because `<div>` is a block tag (which takes up the entire width of its container) while `<input>` is an inline tag. If your layout suddenly gets messed up when a field has errors, this is probably why.
 
-# Recap
+## Recap
 
 `form_for` gives us a lot of power!
 
