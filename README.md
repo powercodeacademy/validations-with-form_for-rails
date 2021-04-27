@@ -1,4 +1,4 @@
-# Validations with **form_for**
+# Validations with form_for
 
 Now that we know Rails automatically performs validations defined on models, let's use this information to easily display validation errors to the user.
 
@@ -32,12 +32,29 @@ A basic implementation looks like this:
 This creates the HTML:
 
 ```html
-<form class="edit_post" id="edit_post" action="/posts/1" accept-charset="UTF-8" method="post">
+<form
+  class="edit_post"
+  id="edit_post"
+  action="/posts/1"
+  accept-charset="UTF-8"
+  method="post"
+>
   <input name="utf8" type="hidden" value="&#x2713;" />
   <input type="hidden" name="_method" value="patch" />
-  <input type="hidden" name="authenticity_token" value="nRPP2OqVKB00/Cr+8EvHfYrb5sAkZRtr8f6dzBaJAI+cMceR0fUatcLWd4zdwYCpojW2J3QLK6uyBKeFAgZvmw==" />
-  <input type="text" name="post[title]" id="post_title" value="Existing Post Title"/>
-  <textarea name="post[content]" id="post_content">Existing Post Content</textarea>
+  <input
+    type="hidden"
+    name="authenticity_token"
+    value="nRPP2OqVKB00/Cr+8EvHfYrb5sAkZRtr8f6dzBaJAI+cMceR0fUatcLWd4zdwYCpojW2J3QLK6uyBKeFAgZvmw=="
+  />
+  <input
+    type="text"
+    name="post[title]"
+    id="post_title"
+    value="Existing Post Title"
+  />
+  <textarea name="post[content]" id="post_content">
+Existing Post Content</textarea
+  >
   <input type="submit" name="commit" value="Update Post" />
 </form>
 ```
@@ -150,14 +167,24 @@ Let's look at another nice feature of `FormBuilder`. Here's our `form_for` code 
 The `text_field` call generates this tag:
 
 ```html
-<input type="text" name="post[title]" id="post_title" value="Existing Post Title"/>
+<input
+  type="text"
+  name="post[title]"
+  id="post_title"
+  value="Existing Post Title"
+/>
 ```
 
 Not only will `FormBuilder` pre-fill an existing `Post` object's data, it will also wrap the tag in a `div` with an error class if the field has failed validation(s):
 
 ```html
 <div class="field_with_errors">
-  <input type="text" name="post[title]" id="post_title" value="Existing Post Title"/>
+  <input
+    type="text"
+    name="post[title]"
+    id="post_title"
+    value="Existing Post Title"
+  />
 </div>
 ```
 
@@ -167,7 +194,6 @@ This can also result in some unexpected styling changes because `<div>` is a blo
 
 `form_for` gives us a lot of power!
 
-Our challenge as developers is to keep track of the different layers of magic that make this tool so convenient. The old adage is true: we're responsible for understanding not only *how* to use `form_for` but also *why* it works. Otherwise, we'll be completely lost as soon as a sufficiently unusual edge case appears.
+Our challenge as developers is to keep track of the different layers of magic that make this tool so convenient. The old adage is true: we're responsible for understanding not only _how_ to use `form_for` but also _why_ it works. Otherwise, we'll be completely lost as soon as a sufficiently unusual edge case appears.
 
 When in doubt, **read the HTML**. Get used to hitting the "View Source" and "Open Inspector" hotkeys in your browser (`Ctrl-u` and `Ctrl-Shift-i` on Chrome Windows; `Option-Command-u` and `Option-Command-i` on Chrome Mac), and remember that most browsers let you [examine `POST` data in their developer network tools](http://superuser.com/questions/395919/where-is-the-post-tab-in-chrome-developer-tools-network).
-
