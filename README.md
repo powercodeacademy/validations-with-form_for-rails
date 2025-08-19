@@ -1,6 +1,6 @@
 # Validations with form_for
 
-> **Note:** In the latest versions of Rails in Nitro at the time of writing this (7.1+), the recommended way to build forms is with [`form_with`](https://guides.rubyonrails.org/form_helpers.html#deprecating-form-for-and-form-tag), which replaces both `form_for` and `form_tag`. However, many legacy codebases (including this lesson) still use `form_for`. For forms that work with models, `form_for` is much better than `form_tag`, but for new code, you should use `form_with`.
+> **Note:** In the latest versions of Rails in Nitro at the time of writing this, the recommended way to build forms is with [`form_with`](https://guides.rubyonrails.org/form_helpers.html#deprecating-form-for-and-form-tag), which replaces both `form_for` and `form_tag`. However, many legacy codebases (including this lesson) still use `form_for`. For forms that work with models, `form_for` is much better than `form_tag`, but for new code, you should use `form_with`.
 
 Now that we know Rails automatically performs validations defined on models, let's use this information to easily display validation errors to the user.
 
