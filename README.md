@@ -1,5 +1,7 @@
 # Validations with form_for
 
+> **Note:** In the latest versions of Rails in Nitro at the time of writing this (7.1+), the recommended way to build forms is with [`form_with`](https://guides.rubyonrails.org/form_helpers.html#deprecating-form-for-and-form-tag), which replaces both `form_for` and `form_tag`. However, many legacy codebases (including this lesson) still use `form_for`. For forms that work with models, `form_for` is much better than `form_tag`, but for new code, you should use `form_with`.
+
 Now that we know Rails automatically performs validations defined on models, let's use this information to easily display validation errors to the user.
 
 ## Objectives
@@ -9,13 +11,15 @@ After this lesson, you'll be able to...
 - use `form_for` to display a form with Validations
 - print out full error messages above the form
 
+
 ## The differences between `form_for` and `form_tag`
 
-This step will make heavy usage of `form_for`, the high-powered alternative to `form_tag`. The biggest difference between these two helpers is that `form_for` creates a form specifically **for** a model object. `form_for` is full of convenient features.
+This lesson uses `form_for`, which is much more powerful and convenient than `form_tag` when working with model objects. `form_for` automatically handles many details for you, such as routing, field naming, and prepopulating values. However, in new Rails projects, you should use `form_with`, which is the new standard and combines the best features of both helpers.
 
 In the example below, `@post` is the model object that needs a form. `form_for` automatically performs a route lookup to find the right URL for post.
 
-`form_for` takes a block. It passes an instance of [FormBuilder](http://api.rubyonrails.org/classes/ActionView/Helpers/FormBuilder.html) as a parameter to the block, which is what `f` is below.
+
+`form_for` takes a block. It passes an instance of [FormBuilder](http://api.rubyonrails.org/classes/ActionView/Helpers/FormBuilder.html) as a parameter to the block, which is what `f` is below. Again, for new code, prefer `form_with`, but understanding `form_for` is important for working in existing Rails codebases.
 
 A basic implementation looks like this:
 
@@ -79,7 +83,8 @@ Here's what we would need to do with `form_tag` to generate the exact same HTML:
 4. Specifying the root parameter name (`post[whatever]`) for every field.
 5. Choosing the attribute (`@post.whatever`) to fill for every field.
 
-Nifty!
+
+Nifty! Just remember: for new Rails code, use `form_with` instead of `form_for` or `form_tag`.
 
 ## Using `form_for` to generate empty forms
 
@@ -190,10 +195,13 @@ Not only will `FormBuilder` pre-fill an existing `Post` object's data, it will a
 
 This can also result in some unexpected styling changes because `<div>` is a block tag (which takes up the entire width of its container) while `<input>` is an inline tag. If your layout suddenly gets messed up when a field has errors, this is probably why.
 
+
 ## Recap
 
-`form_for` gives us a lot of power!
+`form_for` gives us a lot of power when working with model-backed forms in legacy Rails codebases!
 
-Our challenge as developers is to keep track of the different layers of magic that make this tool so convenient. The old adage is true: we're responsible for understanding not only _how_ to use `form_for` but also _why_ it works. Otherwise, we'll be completely lost as soon as a sufficiently unusual edge case appears.
+While `form_for` is still important to understand for maintaining and working in existing projects, remember that `form_with` is the new standard for building forms in modern Rails applications. For new code, you should use `form_with`, but knowing how `form_for` works will help you navigate and update older codebases.
+
+Our challenge as developers is to keep track of the different layers of magic that make these tools so convenient. The old adage is true: we're responsible for understanding not only _how_ to use `form_for` but also _why_ it works. Otherwise, we'll be completely lost as soon as a sufficiently unusual edge case appears.
 
 When in doubt, **read the HTML**. Get used to hitting the "View Source" and "Open Inspector" hotkeys in your browser (`Ctrl-u` and `Ctrl-Shift-i` on Chrome Windows; `Option-Command-u` and `Option-Command-i` on Chrome Mac), and remember that most browsers let you [examine `POST` data in their developer network tools](http://superuser.com/questions/395919/where-is-the-post-tab-in-chrome-developer-tools-network).
